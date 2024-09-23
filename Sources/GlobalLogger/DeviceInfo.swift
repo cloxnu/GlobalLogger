@@ -7,15 +7,15 @@
 
 import UIKit
 
-enum DeviceInfo {
+public enum DeviceInfo {
     
-    @MainActor static var name: String { UIDevice.current.name }
-    @MainActor static var systemName: String { UIDevice.current.systemName }
-    @MainActor static var systemVersion: String { UIDevice.current.systemVersion }
-    @MainActor static var model: String { UIDevice.current.model }
+    @MainActor public static var name: String { UIDevice.current.name }
+    @MainActor public static var systemName: String { UIDevice.current.systemName }
+    @MainActor public static var systemVersion: String { UIDevice.current.systemVersion }
+    @MainActor public static var model: String { UIDevice.current.model }
     
-    static var appVersion: String { Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String }
-    static var appBuildVersion: String { Bundle.main.infoDictionary?["CFBundleVersion"] as! String }
+    public static var appVersion: String { Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String }
+    public static var appBuildVersion: String { Bundle.main.infoDictionary?["CFBundleVersion"] as! String }
     
     private static func deviceModelIdentifier() -> String {
         var systemInfo = utsname()
@@ -29,7 +29,7 @@ enum DeviceInfo {
     }
     
     @MainActor
-    static var description: String {
+    public static var description: String {
         """
 ----------------
 Name: \(name)
