@@ -54,7 +54,7 @@ public func logC(_ message: @autoclosure () -> Logger.Message, metadata: @autocl
 
 public func logElapsedTime<T>(
     _ message: @autoclosure () -> Logger.Message,
-    level: Logger.Level = .trace,
+    level: Logger.Level = .info,
     metadata: @autoclosure () -> Logger.Metadata? = nil,
     work: () throws -> T,
     file: String = #fileID,
