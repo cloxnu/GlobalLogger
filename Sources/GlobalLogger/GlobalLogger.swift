@@ -68,3 +68,21 @@ public func logElapsedTime<T>(
     log("\(message()) \(elapsedTime)", level: level, file: file, function: function, line: line)
     return result
 }
+
+@available(iOS 13.0.0, *)
+public func logElapsedTime<T>(
+    _ message: @autoclosure () -> Logger.Message,
+    level: Logger.Level = .info,
+    metadata: @autoclosure () -> Logger.Metadata? = nil,
+    work: () async throws -> T,
+    file: String = #fileID,
+    function: String = #function,
+    line: UInt = #line
+) async rethrows -> T {
+    let start = DispatchTime.now()
+    let result = try await work()
+    let end = DispatchTime.now()
+    let elapsedTime = Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000
+    log("\(message()) \(elapsedTime)", level: level, file: file, function: function, line: line)
+    return result
+}
