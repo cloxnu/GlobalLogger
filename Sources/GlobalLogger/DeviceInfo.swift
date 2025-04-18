@@ -5,6 +5,7 @@
 //  Created by Sidney Liu on 9/23/24.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public enum DeviceInfo {
@@ -42,3 +43,5 @@ Locale: \(Locale.current.identifier)
 """
     }
 }
+
+#endif
