@@ -13,6 +13,7 @@ public enum DeviceInfo {
     @MainActor public static var name: String { UIDevice.current.name }
     @MainActor public static var systemName: String { UIDevice.current.systemName }
     @MainActor public static var systemVersion: String { UIDevice.current.systemVersion }
+    @MainActor public static var operatingSystemVersionString: String { ProcessInfo.processInfo.operatingSystemVersionString }
     @MainActor public static var model: String { UIDevice.current.model }
     
     public static var appVersion: String { Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String }
@@ -35,6 +36,7 @@ public enum DeviceInfo {
 ----------------
 Name: \(name)
 System: \(systemName) \(systemVersion)
+Full Version: \(operatingSystemVersionString)
 Model: \(deviceModelIdentifier())
 App Version: \(appVersion) (\(appBuildVersion))
 Date: \(Date())
